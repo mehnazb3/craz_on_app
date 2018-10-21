@@ -55,7 +55,7 @@ class Ability
     end
 
     can :destroy, Like do |like|
-    user.present?
+      user.present?
     end
 
     # MicroBlogs
