@@ -13,7 +13,7 @@ class Api::V1::LikesController < ApplicationController
     response :bad_request
   end
   def create
-    p "Indies"
+    p "Indiese"
     p params
     
     @micro_blog = @current_user.likes.new(like_params)
