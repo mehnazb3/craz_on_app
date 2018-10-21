@@ -16,7 +16,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable
   
-  has_many 
+  has_many :micro_
   has_many :follower_relationships, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, through: :follower_relationships, source: :follower
 
