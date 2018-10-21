@@ -51,7 +51,7 @@ class Ability
 
     # Likes
     can :create, Like do |like|
-    
+      u
     end
 
     can :destroy, Like do |like|
