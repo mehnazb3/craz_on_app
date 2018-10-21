@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :followers, through: :foll
   
 
-  # Associationsows
+  # Associationsow
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
