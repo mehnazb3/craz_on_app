@@ -51,7 +51,7 @@ class Ability
 
     # Likes
     can :create, Like do |like|
-      u
+      user.present?
     end
 
     can :destroy, Like do |like|
