@@ -17,7 +17,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable
   has_many :follows
   has_many :followers, through: :follows
-  , through: :follows
+
   
 
   # Associations
