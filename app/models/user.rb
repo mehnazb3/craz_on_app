@@ -16,10 +16,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable
   has_many :follows
-  has_many :followers, through: :foll
+  has_many :followers, through: :follows
   
 
-  # Associationsow
+  # Associations
 
   # Validations
   validates :email, presence: true, uniqueness: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
