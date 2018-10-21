@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: :followed_id, class_name: 'Block'
   has_many :followers, through: :follower_relationships, source: :follower
 
-  has_many :following_relationships, foreign_key: :follower_id, class_name: 'Block'
+  has_many :following_relationships, foreign_key: :blocker_id, class_name: 'Block'
   has_many :followed_by, through: :following_relationships, source: :following
   
 
