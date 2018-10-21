@@ -16,7 +16,7 @@ class Api::V1::LikesController < ApplicationController
     p "Indiese"
     p params
     
-    @micro_blog = @micro_blog.likes.new(like_params)
+    @ = @micro_blog.likes.new(like_params)
     if @micro_blog.save
       render :show, status: :created
     else
