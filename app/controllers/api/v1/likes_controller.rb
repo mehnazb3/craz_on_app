@@ -13,7 +13,12 @@ class Api::V1::LikesController < ApplicationController
     response :bad_request
   end
   def create
-    
+    @micro_blog = @current_user.micro_blogs.new(micro_blog_params)
+    if @micro_blog.save
+      render :show, status: :created
+    else
+      render_error_state(@micro_blog.errors.full_messages.join(', '), :bad_request)
+    end
   end
 
   swagger_api :destroy do
