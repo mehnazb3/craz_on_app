@@ -13,6 +13,7 @@ class Api::V1::LikesController < ApplicationController
     response :bad_request
   end
   def create
+    
   end
 
   swagger_api :destroy do
