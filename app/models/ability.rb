@@ -104,6 +104,7 @@ class Ability
     can :block, User do |user_instance|
       user.blockers.pluck(:id).exclude?(user_instance.id)
     end
+    
     can :block, User do |user_instance|
       user.blockers.pluck(:id).exclude?(user_instance.id)
     end
