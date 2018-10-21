@@ -13,7 +13,9 @@ class Api::V1::LikesController < ApplicationController
     response :bad_request
   end
   def create
-    p pa
+      
+    p params
+    
     @micro_blog = @current_user.likes.new(like_params)
     if @micro_blog.save
       render :show, status: :created
