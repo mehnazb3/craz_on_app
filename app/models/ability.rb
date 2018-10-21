@@ -102,7 +102,7 @@ class Ability
     end
 
     can :block, User do |user_instance|
-      user.blockers.pluck(:id).include?(user_id)
+      user.blockers.pluck(:id).include?()
     end
 
     can [:update, :blocked_list, :unblock_users, :update_password], User do |user_instance|
