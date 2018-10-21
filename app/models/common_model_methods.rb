@@ -5,9 +5,15 @@ module CommonModelMethods
 
   included do
     # Scopes
-    scope :viewable_users, -> (blocked_by_user_ids) {  }
-    scope :open_status, -> {  }
-    scope :abused_status, -> {  }
+    scope :viewable_users, -> (blocked_by_user_ids) {
+      if blocked_by_user_ids.present?
+        where( 'user_id NOT IN (?)', blocked_by_user_ids )
+      else
+        all
+      end
+    }
+    scope :open_status, -> { where(status: 0)  }
+    scope :abused_status, -> { where(status: 1) }
 
     # Callbacks
     before_validation :set_location
@@ -34,5 +40,11 @@ module CommonModelMethods
   end
 
   def update_record_status(record_status)
+    self.update_column(:status, record_status)
+    self.likes.update_all(status: record_status)
+    self.comments.update_all(status: record_status)
+    self.comments.map{|comment| comment.comments.update_all(status: record_status) }
+    self.shares.update_all(status: record_status) if self.is_a?(MicroBlog)
   end
+
 end

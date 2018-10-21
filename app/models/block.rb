@@ -1,7 +1,7 @@
 class Block < ApplicationRecord
   # Associations
-  belongs_to :blocker, class_name: 'User'
-  belongs_to :blocked, class_name: 'User'
+  belongs_to :blocker, foreign_key: 'blocker_id',class_name: 'User'
+  belongs_to :blocked, foreign_key: 'blocked_id', class_name: 'User'
 
   # Validations
   validates_presence_of :blocker_id, :blocked_id

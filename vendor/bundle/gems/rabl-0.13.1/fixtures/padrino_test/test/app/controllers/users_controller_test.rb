@@ -1,0 +1,1 @@
+fixtures/padrino_test/test/app/controllers/../../../../../test/integration/users_controller_test.rb

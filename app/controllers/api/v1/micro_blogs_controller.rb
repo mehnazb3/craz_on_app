@@ -41,6 +41,23 @@ class Api::V1::MicroBlogsController < ApplicationController
     response :bad_request
   end
   def list_by_micro_blog
+    if params[:id].present? && MicroBlog::ListBy::ITEMS.include?(params[:item])
+      object = MicroBlog.where(id: params[:id]).first
+      if object.present?
+        @item_name = params[:item]
+        if @item_name == 'like'
+          @items = object.likes
+        elsif @item_name == 'comment'
+          @items = object.comments
+        elsif @item_name == 'share'
+          @items = object.shares
+        end
+      else
+        render_error_state("Invalid parameter", :bad_request)
+      end
+    else
+      render_error_state("Invalid parameter", :bad_request)
+    end
   end
 
   swagger_api :update do
@@ -52,6 +69,7 @@ class Api::V1::MicroBlogsController < ApplicationController
     response :unauthorized
     response :bad_request
   end
+
   def update
     if @micro_blog.update(micro_blog_params)
       render :show
@@ -68,6 +86,7 @@ class Api::V1::MicroBlogsController < ApplicationController
     response :unauthorized
     response :bad_request
   end
+
   def destroy
     @micro_blog.destroy_record
     render_success_json

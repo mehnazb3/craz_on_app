@@ -41,10 +41,10 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :likes, only: [ :destroy ] do
-        collection do
-          get :create
-        end
+      resources :likes, only: [:create, :destroy ] do
+        # collection do
+        #   get :create
+        # end
       end
 
       resources :comments, only: [ :create, :update, :destroy ]

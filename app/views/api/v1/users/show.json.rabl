@@ -1,5 +1,5 @@
 object @user
-attributes :id, :email, :first_name, :last_name, :location_id
+attributes :id, :email, :first_name, :last_name, :location_id, :points, :title
 
 node(:location_name) { @user.location.name }
 

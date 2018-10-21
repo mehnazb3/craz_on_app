@@ -14,6 +14,27 @@ class Api::V1::CommentsController < ApplicationController
     response :bad_request
   end
   def create
+    if params[:comment][:message].present? && params[:comment][:item_type].present? && Comment::ListBy::ITEMS.include?(params[:comment][:item_type])
+      object = params[:comment][:item_type].classify.constantize.where(id: params[:comment][:item_id]).first
+
+      if object.present?
+        @item = object.comments.new({message: params[:comment][:message]})
+        if object.is_a?(Comment)
+          @item.is_a_reply = true
+        end
+        @item.user_id = current_user.id
+        if @item.save
+          #render :show_list, status: :created
+          render_success_json(:created)
+        else
+          render_error_state(@item.errors.full_messages.join(', '), :bad_request)
+        end
+      else
+        render_error_state("Invalid parameter", :bad_request)
+      end
+    else
+      render_error_state("Invalid parameter", :bad_request)
+    end
   end
 
   swagger_api :update do

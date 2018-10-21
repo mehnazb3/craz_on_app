@@ -1,0 +1,1 @@
+fixtures/rails2/test/functionals/../../../../test/integration/posts_controller_test.rb

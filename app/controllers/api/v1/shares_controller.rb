@@ -13,6 +13,12 @@ class Api::V1::SharesController < ApplicationController
     response :bad_request
   end
   def create
+    @share = @current_user.shares.new(share_params)
+    if @share.save
+      render :show, status: :created
+    else
+      render_error_state(@share.errors.full_messages.join(', '), :bad_request)
+    end
   end
 
   swagger_api :show do
@@ -36,6 +42,21 @@ class Api::V1::SharesController < ApplicationController
     response :bad_request
   end
   def list_by_share
+    if params[:id].present? && Share::ListBy::ITEMS.include?(params[:item])
+      object = Share.where(id: params[:id]).first
+      if object.present?
+        @item_name = params[:item]
+        if @item_name == 'like'
+          @items = object.likes
+        elsif @item_name == 'comment'
+          @items = object.comments
+        end
+      else
+        render_error_state("Invalid parameter", :bad_request)
+      end
+    else
+      render_error_state("Invalid parameter", :bad_request)
+    end
   end
 
   swagger_api :update do

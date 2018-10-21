@@ -1,0 +1,19 @@
+current directory: /Users/mehnazbano/craz_on_app/vendor/bundle/gems/byebug-10.0.0/ext/byebug
+/Users/mehnazbano/.rvm/rubies/ruby-2.5.1/bin/ruby -r ./siteconf20181021-4140-13ycfn.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mehnazbano/craz_on_app/vendor/bundle/gems/byebug-10.0.0/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/mehnazbano/craz_on_app/vendor/bundle/gems/byebug-10.0.0/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/mehnazbano/craz_on_app/vendor/bundle/gems/byebug-10.0.0/ext/byebug
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20181021-4140-20ncgt/byebug

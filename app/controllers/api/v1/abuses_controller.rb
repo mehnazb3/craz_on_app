@@ -13,7 +13,18 @@ class Api::V1::AbusesController < ApplicationController
     response :unauthorized
     response :bad_request
   end
+
   def index
+    if params[:item_type].present?
+      if Abuse::AbusableItem::LIST.include?(params[:item_type])
+        @abuses = Abuse.filter_by_item_type(params[:item_type].classify.constantize.to_s).page(params[:page]).per(params[:per_page])
+        render :index, status: :ok
+      else
+        render_error_state("Invalid parameter", :bad_request)
+      end
+    else
+      @abuses = Abuse.unhandled.page(params[:page]).per(params[:per_page])
+    end
   end
 
   swagger_api :create do
@@ -27,6 +38,22 @@ class Api::V1::AbusesController < ApplicationController
     response :bad_request
   end
   def create
+    if params[:abuse][:abusable_item_type].present? && Abuse::AbusableItem::LIST.include?(params[:abuse][:abusable_item_type])
+      object = params[:abuse][:abusable_item_type].classify.constantize.where(id: params[:abuse][:abusable_item_id]).first
+      if object.present?
+        @item = object.abuses.new(abuse_params)
+        @item.user_id = current_user.id
+        if @item.save
+          render_success_json(:created)
+        else
+          render_error_state("Invalid parameter", :bad_request)
+        end
+      else
+        render_error_state("Invalid parameter", :bad_request)
+      end
+    else
+      render_error_state("Invalid parameter", :bad_request)
+    end
   end
 
   swagger_api :handle_abuses do
@@ -38,7 +65,25 @@ class Api::V1::AbusesController < ApplicationController
     response :unauthorized
     response :bad_request
   end
+
   def handle_abuses
+    if params[:abuse_ids].present? && ['true', 'false', true, false].include?(params[:confirm_status])
+      success = { results: [] }
+      @abuses = Abuse.where(id: params[:abuse_ids].split(',').flatten.compact.uniq )
+      @abuses.each do |abuse|
+        abuse.has_been_handled = true
+        abuse.is_confirmed = ActiveModel::Type::Boolean.new.cast(params[:confirm_status])
+        if ActiveModel::Type::Boolean.new.cast(params[:confirm_status])
+          abuse.abusable_item.abuse_record
+        else
+          abuse.abusable_item.update_column(:status, 0) if abuse.abusable_item.status == 1
+        end
+        success[:results] << { abuse_id: abuse.id } if abuse.save
+      end
+      render json: success, status: :ok
+    else
+      render_error_state("Invalid parameter", :bad_request)
+    end
   end
 
   private

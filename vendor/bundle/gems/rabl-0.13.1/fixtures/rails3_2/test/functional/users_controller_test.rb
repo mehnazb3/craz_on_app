@@ -1,0 +1,1 @@
+fixtures/rails3_2/test/functional/../../../../test/integration/rails3_2/users_controller_test.rb

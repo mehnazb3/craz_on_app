@@ -11,7 +11,7 @@ class MicroBlog < ApplicationRecord
   has_many :shares
   has_many :comments, as: :commentable_item
   has_many :likes, as: :likable_item
-  has_many :abuses, as: :abusable_item
+  has_many :abuses, :as => :abusable_item, :dependent => :destroy, :class_name => 'Abuse'
 
   # Validations
   validates_length_of :message, in: 3..250

@@ -10,14 +10,17 @@ class Abuse < ApplicationRecord
   end
 
   # Associations
+  belongs_to :abusable_item, polymorphic: true
+  belongs_to :user
+  belongs_to :location
 
   # Validations
 
   # Scopes
-  scope :unhandled, -> {  }
-  scope :confirmed, -> {  }
-  scope :rejected, -> {  }
-  scope :filter_by_item_type, -> (item_type) {  }
+  scope :unhandled, -> {  where(has_been_handled: false) }
+  scope :confirmed, -> { where(is_confirmed: true) }
+  scope :rejected, -> { where(is_confirmed: false, has_been_handled: true ) }
+  scope :filter_by_item_type, -> (item_type) { where(abusable_item_type: item_type ) }
 
   # Callbacks
   after_update :confirm_abuse
@@ -32,5 +35,8 @@ class Abuse < ApplicationRecord
 
   # Instance methods
   def update_abuse_confirmation(confirm_status = false)
+    self.update_column(:has_been_handled, true)
+    self.update_column(:is_confirmed, confirm_status)
+    self.abusable_item.abuse_record
   end
 end

@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def set_current_user
-    p "request.headers"
-    p request.env["HTTP_X_API_KEY"]
     @current_user ||= User.from_api_key(request.env["HTTP_X_API_KEY"], true)
-    p "@current_user"
-    p @current_user
   end
 
   def authenticate_user_token!
