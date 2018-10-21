@@ -90,9 +90,15 @@ class Ability
     end
 
     can :follow, User do |user_instance|
+      p "user_instance"
+      p user_instance
+      p "user"
+      p user
+      !user.follows?(user_instance)
     end
 
     can :unfollow, User do |user_instance|
+      user.follows?(user_instance)
     end
 
     can :block, User do |user_instance|

@@ -55,6 +55,7 @@ class Api::V1::UsersController < ApplicationController
     response :unauthorized
     response :bad_request
   end
+  
   def follow
     @current_user.follow(params[:id])
     render_success_json
