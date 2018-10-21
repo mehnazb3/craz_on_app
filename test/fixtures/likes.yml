@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+like_1:
+  id: 1
+  location_id: 1
+  user_id: 1
+  likable_item_id: 1
+  likable_item_type: <%= MicroBlog.name %>
+
+like_2:
+  id: 2
+  location_id: 2
+  user_id: 2
+  likable_item_id: 1
+  likable_item_type: <%= MicroBlog.name %>
+
+like_3:
+  id: 3
+  location_id: 1
+  user_id: 1
+  likable_item_id: 1
+  likable_item_type: <%= Share.name %>
+
+like_4:
+  id: 4
+  location_id: 2
+  user_id: 2
+  likable_item_id: 1
+  likable_item_type: <%= Comment.name %>
+
+like_5:
+  id: 5
+  location_id: 1
+  user_id: 1
+  likable_item_id: 4
+  likable_item_type: <%= Comment.name %>

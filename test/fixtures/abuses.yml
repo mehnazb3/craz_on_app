@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+abuse_1:
+  id: 1
+  reason: 'Abuse 1 on MicroBlog'
+  abusable_item_id: 1
+  abusable_item_type: <%= MicroBlog.name %>
+  location_id: 1
+  user_id: 1
+
+abuse_2:
+  id: 2
+  reason: 'Abuse 2 on Share'
+  abusable_item_id: 1
+  abusable_item_type: <%= Share.name %>
+  location_id: 2
+  user_id: 2
+
+abuse_3:
+  id: 3
+  reason: 'Abuse 3 on Comment'
+  abusable_item_id: 1
+  abusable_item_type: <%= Comment.name %>
+  location_id: 1
+  user_id: 1
+
+abuse_4:
+  id: 4
+  reason: 'Abuse 4 on Comment'
+  abusable_item_id: 2
+  abusable_item_type: <%= Comment.name %>
+  location_id: 2
+  user_id: 2
+
+abuse_5:
+  id: 5
+  reason: 'Abuse 5 on Comment'
+  abusable_item_id: 4
+  abusable_item_type: <%= Comment.name %>
+  location_id: 1
+  user_id: 1
+
+abuse_6:
+  id: 6
+  reason: 'Abuse 6 on MicroBlog'
+  abusable_item_id: 5
+  abusable_item_type: <%= MicroBlog.name %>
+  location_id: 2
+  user_id: 2
+  has_been_handled: true
+  is_confirmed: true

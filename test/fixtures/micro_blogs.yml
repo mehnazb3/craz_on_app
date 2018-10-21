@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anand_mb_1:
+  id: 1
+  message: 'Anand micro-blog 1'
+  location_id: 1
+  user_id: 1
+
+anand_mb_2:
+  id: 2
+  message: 'Anand micro-blog 2'
+  location_id: 1
+  user_id: 1
+
+bharath_mb_3:
+  id: 3
+  message: 'Bharath micro-blog 3'
+  location_id: 2
+  user_id: 2
+
+bharath_mb_4:
+  id: 4
+  message: 'Bharath micro-blog 4'
+  location_id: 2
+  user_id: 2
+
+chandru_mb_5:
+  id: 5
+  message: 'Chandru micro-blog 5'
+  location_id: 3
+  user_id: 3
+  status: <%= Constants::Item::Status::ABUSED %>
+
+chandru_mb_6:
+  id: 6
+  message: 'Chandru micro-blog 6'
+  location_id: 3
+  user_id: 3
+  status: <%= Constants::Item::Status::DELETED %>

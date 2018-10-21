@@ -1,0 +1,27 @@
+defaults: &defaults
+  asset_host:
+    enabled: false
+    web_url: http://localhost:3000
+    url: http://localhost:3000
+
+local_defaults: &local_defaults
+  host: localhost
+  port: 3000  # used by the swagger to generate json files
+  protocol: http
+
+hacker_rank_defaults: &hacker_rank_defaults
+  host: 10-142-0-24-8000-4rrjbdbr306-a1po.hackerrank.io
+  port: 80  # used by the swagger to generate json files
+  protocol: https
+
+dev_defaults: &dev_defaults
+  <<: *defaults
+  <<: *hacker_rank_defaults
+  # <<: *local_defaults
+  relative_url_root: /
+
+development:
+  <<: *dev_defaults
+
+test:
+  <<: *defaults

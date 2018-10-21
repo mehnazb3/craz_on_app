@@ -1,0 +1,42 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anand:
+  id: 1
+  email: 'anand.s@rails_e2_soln.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'anands') %>
+  auth_token: 'anandsai_auth'
+  first_name: 'Anand'
+  last_name: 'Sai'
+  location_id: 1
+  is_admin: true
+  gender: <%= Constants::User::Gender::MALE %>
+
+bharath:
+  id: 2
+  email: 'bharath.n@rails_e2_soln.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'bharathn') %>
+  auth_token: 'bharathnaren_auth'
+  first_name: 'Bharath'
+  last_name: 'Naren'
+  location_id: 2
+  gender: <%= Constants::User::Gender::MALE %>
+
+chandru:
+  id: 3
+  email: 'chandru.l@rails_e2_soln.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'chandrul') %>
+  auth_token: 'chandrulajapathy_auth'
+  first_name: 'Chandru'
+  last_name: 'Lajapathy'
+  location_id: 3
+  gender: <%= Constants::User::Gender::MALE %>
+
+durga:
+  id: 4
+  email: 'durga.e@rails_e2_soln.com'
+  encrypted_password: <%= User.new.send(:password_digest, 'durgae') %>
+  auth_token: 'durgaekambaram_auth'
+  first_name: 'Durga'
+  last_name: 'Ekambaram'
+  location_id: 4
+  gender: <%= Constants::User::Gender::FEMALE %>

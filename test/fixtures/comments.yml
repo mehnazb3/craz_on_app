@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+comment_1_mb_1:
+  id: 1
+  message: 'Comment 1 on micro-blog 1'
+  location_id: 1
+  commentable_item_id: 1
+  commentable_item_type: <%= MicroBlog.name %>
+  user_id: 1
+
+comment_2_mb_1:
+  id: 2
+  message: 'Comment 2 on micro-blog 1'
+  location_id: 2
+  commentable_item_id: 1
+  commentable_item_type: <%= MicroBlog.name %>
+  user_id: 2
+
+comment_3_cmt_1:
+  id: 3
+  message: 'Reply comment to comment 1'
+  location_id: 1
+  commentable_item_id: 1
+  commentable_item_type: <%= Comment.name %>
+  user_id: 1
+  is_a_reply: true
+
+comment_4_cmt_1:
+  id: 4
+  message: 'Reply comment to comment 1'
+  location_id: 2
+  commentable_item_id: 1
+  commentable_item_type: <%= Comment.name %>
+  user_id: 2
+  is_a_reply: true
+
+comment_5_smb_1:
+  id: 5
+  message: 'Comment on share 1'
+  location_id: 2
+  commentable_item_id: 1
+  commentable_item_type: <%= Share.name %>
+  user_id: 2

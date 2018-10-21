@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anand_smb_1:
+  id: 1
+  message: 'Anand share of micro-blog 1'
+  location_id: 1
+  micro_blog_id: 1
+  user_id: 1
+
+anand_smb_2:
+  id: 2
+  message: 'Anand share of micro-blog 2'
+  location_id: 1
+  micro_blog_id: 1
+  user_id: 1
+
+bharath_smb_3:
+  id: 3
+  message: 'Bharath share of micro-blog 3'
+  location_id: 2
+  micro_blog_id: 3
+  user_id: 2
