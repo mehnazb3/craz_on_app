@@ -102,6 +102,7 @@ class Ability
     end
 
     can :block, User do |user_instance|
+
     end
 
     can [:update, :blocked_list, :unblock_users, :update_password], User do |user_instance|
