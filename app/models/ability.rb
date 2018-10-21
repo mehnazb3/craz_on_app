@@ -94,7 +94,7 @@ class Ability
       p user_instance
       p "user"
       p user
-      !user.follows?(user_instance)
+      !user.follows?(user_instance.id)
     end
 
     can :unfollow, User do |user_instance|
