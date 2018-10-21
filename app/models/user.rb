@@ -16,7 +16,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :validatable
   has_many :followers, through: :follows
-  has_many :followers, through: :follows
+  has_many :following, through: :follows
   
 
   # Associations
