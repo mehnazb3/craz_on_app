@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :blockers, through: :blocker_relationships, source: :follower
 
   has_many :blocking_relationships, foreign_key: :blocker_id, class_name: 'Block'
-  has_many :followed_by, through: :blocking_relationships, source: :following
+  has_many :folloed_by, through: :blocking_relationships, source: :following
   
 
   # Associations
