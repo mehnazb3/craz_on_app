@@ -86,7 +86,7 @@ class Ability
     end
 
     # Users
-    can [:show, :list_by_user, :unfollow], User do |user_instance|
+    can [:show, :list_by_user], User do |user_instance|
     end
 
     can :follow, User do |user_instance|
