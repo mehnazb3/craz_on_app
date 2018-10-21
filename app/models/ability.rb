@@ -107,7 +107,7 @@ class Ability
     
 
     can [:update, :blocked_list, :unblock_users, :update_password], User do |user_instance|
-        user.is_admi
+        user.is_admin
     end
   end
 end
