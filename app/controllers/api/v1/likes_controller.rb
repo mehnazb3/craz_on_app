@@ -20,7 +20,7 @@ class Api::V1::LikesController < ApplicationController
     if @like.save
       render :show, status: :created
     else
-      render_error_state(@micro_blog.errors.full_messages.join(', '), :bad_request)
+      render_error_state(@like.errors.full_messages.join(', '), :bad_request)
     end
   end
 
